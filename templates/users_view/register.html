@@ -1,0 +1,67 @@
+{% extends "baselayout.html" %}
+{% block content %}
+    <div class="content-section col-lg-8">
+    <form method="post" action="">
+        <fieldset class="form-group small">
+            <legend class="border-bottom mb-4">Register Now</legend>
+
+            <div class="form-group">
+                <label class="form-control-static font-weight-bold">username</label>
+                {% if  blank_username != "" %}
+                    <input class="form-control form-control-sm is-invalid" type="text" name="username">
+                    <div class="invalid-feedback">
+                    <span>{{ blank_username }}</span>
+                    </div>
+                {% else %}
+                    <input class="form-control form-control-sm" type="text" name="username">
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                <label class="form-control-static font-weight-bold">email</label>
+                {% if  blank_mail != "" %}
+                    <input class="form-control form-control-sm is-invalid" type="email" name="email">
+                    <div class="invalid-feedback">
+                    <span>{{ blank_mail }}</span>
+                    </div>
+                {% else %}
+                    <input class="form-control form-control-sm" type="email" name="email">
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                <label class="form-control-static font-weight-bold">password</label>
+                {% if  blank_password != "" %}
+                    <input class="form-control form-control-sm is-invalid" type="password" name="password">
+                    <div class="invalid-feedback">
+                    <span>{{ blank_password }}</span>
+                    </div>
+                {% else %}
+                    <input class="form-control form-control-sm" type="password" name="password">
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                <label class="form-control-static font-weight-bold">confirm password</label>
+                {% if  blank_confirm_password != "" %}
+                    <input class="form-control form-control-sm is-invalid" type="password" name="confirm password">
+                    <div class="invalid-feedback">
+                    <span>{{ blank_confirm_password }}</span>
+                    </div>
+                {% else %}
+                    <input class="form-control form-control-sm" type="password" name="confirm password">
+                {% endif %}
+            </div>
+        </fieldset>
+
+        <div class="form-group small">
+            <button class="btn btn-outline-info btn-sm" type="submit" id="submit">Sign Up</button>
+        </div>
+    </form>
+    </div>
+    <div class="form-group small">
+    <small class="text-muted small">
+        Already Have An Account? <a class="ml-2" href="{{ url_for("users_view.login_user") }}">Sign In</a>
+    </small>
+    </div>
+{% endblock content %}

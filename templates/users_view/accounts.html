@@ -1,0 +1,53 @@
+{% extends "baselayout.html" %}
+{% block content %}
+    <div class="content-section col-lg-8">
+        <div class="media">
+            <img class="rounded-circle account-image" src="{{ image_file }}">
+            <div class="media-body">
+                <h2 class="account-heading">{{ current_user.username }}</h2>
+                <p class="text-secondary">{{ current_user.email }}</p>
+            </div>
+        </div>
+        <!--Update Form Here -->
+        <form method="post" action="" enctype=multipart/form-data role="form">
+            <fieldset class="form-group small">
+                <legend class="border-bottom mb-4">Account Update</legend>
+
+                <div class="form-group">
+                    <label class="form-control-static font-weight-bold">username</label>
+                    {% if  blank_username != "" %}
+                        <input class="form-control form-control-sm is-invalid" type="text" name="username">
+                        <div class="invalid-feedback">
+                        <span>{{ blank_username }}</span>
+                        </div>
+                    {% else %}
+                        <input class="form-control form-control-sm" type="text" name="username">
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-static font-weight-bold">email</label>
+                    {% if  blank_email != "" %}
+                        <input class="form-control form-control-sm is-invalid" type="email" name="email">
+                        <div class="invalid-feedback">
+                        <span>{{ blank_email }}</span>
+                        </div>
+                    {% else %}
+                        <input class="form-control form-control-sm" type="email" name="email">
+                    {% endif %}
+                </div>
+                <div class="form-group" role="form">
+                    <label class="fa-file-picture-o font-weight-bold">Update Profile Picture</label>
+                    <input class="form-control-file" role="form" type="file" name="file">
+                    {% if  blank_filel != "" %}
+                        <span class="text-danger">{{ blank_file }}</span></br>
+                    {% endif %}
+                </div>
+            </fieldset>
+
+            <div class="form-group small">
+                <button class="btn btn-outline-info btn-sm" type="submit" id="submit">Update</button>
+            </div>
+        </form>
+    </div>
+{% endblock content %}
